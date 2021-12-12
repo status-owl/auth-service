@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "github.com/status-owl/auth-service/pb";
+
+
+package authsvc;
+
+service AuthService {
+  rpc CreateClient(CreateClientRequest) returns (CreateClientReply) {}
+  rpc RemoveClient(RemoveClientRequest) returns (RemoveClientReply) {}
+  rpc FindClientByID(FindClientByIDRequest) returns (FindClientByIDReply) {}
+}
+
+
+message CreateClientRequest {
+  string ID = 1;
+  bytes secret = 2;
+  string userID = 3;
+  AuthType authType = 4;
+}
+
+message RemoveClientRequest {
+  string ID = 1;
+}
+
+message FindClientByIDRequest {
+  string ID = 1;
+}
+
+message CreateClientReply {
+
+}
+
+message RemoveClientReply {
+
+}
+
+message FindClientByIDReply {
+  string ID = 1;
+  string userID = 2;
+}
+
+enum AuthType {
+  UNKNOWN = 0;
+  JWT = 1;
+}

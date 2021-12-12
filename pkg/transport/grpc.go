@@ -1,22 +1,12 @@
 package transport
 
 import (
-	"context"
-	"github.com/status-owl/auth-service/proto"
+	"github.com/status-owl/auth-service/pb"
 )
 
-//go:generate protoc --go_out=../../proto --go-grpc_out=../../proto  --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative  --proto_path=../../proto ../../proto/authsvc.proto
+//go:generate protoc --go_out=../../pb --go-grpc_out=../../pb  --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative  --proto_path=../../pb ../../pb/authsvc.proto
+//go:generate mockgen -source ../../pb/authsvc_grpc.pb.go -destination ../../pb/authsvc_grpc_mock.pb.go -package pb
 
 type grpcServer struct {
-	proto.UnimplementedAuthServiceServer
-}
-
-func (s *grpcServer) CreateAuthMethod(ctx context.Context, request *proto.CreateClientRequest) (*proto.CreateClientReply, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (s *grpcServer) mustEmbedUnimplementedAuthServiceServer() {
-	//TODO implement me
-	panic("implement me")
+	pb.UnimplementedAuthServiceServer
 }

@@ -3,6 +3,7 @@ module github.com/status-owl/auth-service
 go 1.17
 
 require (
+	github.com/golang/mock v1.4.4
 	google.golang.org/grpc v1.42.0
 	google.golang.org/protobuf v1.27.1
 )
